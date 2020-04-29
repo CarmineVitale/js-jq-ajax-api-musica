@@ -13,7 +13,8 @@ $(document).ready(function () {
 					immagine: dati[i].poster,
 					titolo: dati[i].title,
 					autore:dati[i].author,
-					anno: dati[i].year,
+                    anno: dati[i].year,
+                    genere: dati[i].genre.toLowerCase(),
                 }
                 var html = template(dischi);
 			    $('.cds-container').append(html);
@@ -25,8 +26,30 @@ $(document).ready(function () {
             alert('error');
         }
     }); //fine chiamata ajax
+
+
+    //SElect changes
+    $('#genere').change(function () { 
+        var scelta = $(this).val();
+        if (scelta == 'seleziona') {
+            $('.cd').show();
+        } else {
+            $('.cd').hide();
+            $('.cd.' + scelta).show();
+        }
+        
+        
+        
+    });
+
+    
     
 }); //<---end ready
+
+
+
+
+
 
 
 
